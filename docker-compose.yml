@@ -1,0 +1,15 @@
+version: '3'
+services:
+  db:
+    build: './neo4j-instance'
+    ports:
+    - "1234:7474"
+    - "7687:7687"
+  api:
+    build: './plumber-instance'
+    ports:
+    - "4321:4321"
+    depends_on:
+    - db
+    restart: on-failure
+
